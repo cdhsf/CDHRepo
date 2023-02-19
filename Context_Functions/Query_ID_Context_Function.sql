@@ -8,7 +8,7 @@
     select last_query_id();
     
     -- ANSI not supported and without bracket, it lands on error
-    select last_query_id;
+    select last_query_id();
     
 // =================================
 
