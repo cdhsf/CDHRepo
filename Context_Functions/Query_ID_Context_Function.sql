@@ -74,5 +74,6 @@ select last_query_id(2); -- this gives the 2nd query id -- use database demo_db;
 
 
 -- switch role and run query
+
 use role accountadmin;
-select query_id, split(query_id,'-'),session_id from "SNOWFLAKE"."ACCOUNT_USAGE"."QUERY_HISTORY" 
+select query_id, split(query_id,'-'),session_id from "SNOWFLAKE"."ACCOUNT_USAGE"."QUERY_HISTORY";
