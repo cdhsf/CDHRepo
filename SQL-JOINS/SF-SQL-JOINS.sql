@@ -44,7 +44,7 @@ SELECT  T1.ID,T1.NAME,T2.profession_desc FROM Customer T1 CROSS JOIN  Profession
 --  Natural Join in snowflake
 
 --Statement : 
-SELECT  T1.ID,T1.NAME,T2.profession FROM T1 NATURAL JOIN T2;
+SELECT  T1.ID,T1.NAME,T2.profession_desc FROM T1 NATURAL JOIN T2;
 
 --  Lateral Join in Snowflake
 
