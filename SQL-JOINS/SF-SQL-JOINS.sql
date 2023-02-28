@@ -6,21 +6,35 @@
 /*  Inner join, joins two table according to ON condition. 
 	If inner join is used without ON clause or using comma without WHERE clause then the result will be cross join.
 	Inner join will joins the common data which should present in both the tables.*/
+
+
+    select current_database();
+    select current_warehouse();
+    select current_schema();
+
+    
 	
 	CREATE OR REPLACE TABLE Customer (id number, name varchar(30));
 	
-	INSERT INTO customer(id, name) values(1,	'JOHN'),
-																		  (2,	'STEVEN'),
+	INSERT INTO customer(id, name) values(1,	'JOHN'), (2,	'STEVEN'),
 																		   (3,	'DISHA'),
 																		   (4,	'JEEVAN');
 																		   
 	CREATE OR REPLACE TABLE profession (id number, profession_desc varchar(50));
 	
-	INSERT INTO customer(id, profession_desc ) values (1,	'PRIVATE EMPLOYEE'), 
+	INSERT INTO profession(id, profession_desc ) values (1,	'PRIVATE EMPLOYEE'), 
 																							(2,	'ARTIST'),
 																							(5,	'GOVERNMENT EMPLOYEE');
+
+desc table customer;
+desc table profession;
+
+select * from customer;
+select * from profession;
+
+                                                                                            
 	--Statement : 
-SELECT  T1.ID,T1.name,T2.profession_desc FROM customer T1 INNER JOIN profession T2 ON T1.ID=T2.ID
+SELECT  T1.ID,T1.name,T2.profession_desc FROM customer T1 INNER JOIN profession T2 ON T1.ID=T2.ID;
 
 --    left join in snowflake
 
@@ -39,12 +53,12 @@ SELECT  T1.ID,T1.NAME,T2.profession_desc FROM Customer T1 FULL OUTER JOIN Profes
 --  Cross Join in Snowflake
 
 --SQL Statement : 
-SELECT  T1.ID,T1.NAME,T2.profession_desc FROM Customer T1 CROSS JOIN  Profession T2;
+SELECT  T1.ID,T1.NAME,T2.PROFESSION_DESC profession_desc FROM Customer T1 CROSS JOIN  Profession T2;
 
 --  Natural Join in snowflake
 
 --Statement : 
-SELECT  T1.ID,T1.NAME,T2.profession_desc FROM T1 NATURAL JOIN T2;
+SELECT  T1.ID,T1.NAME,T2.PROFESSION_DESC FROM customer as T1 NATURAL JOIN profession T2;
 
 --  Lateral Join in Snowflake
 
@@ -69,6 +83,9 @@ SELECT *
     WHERE employee_ID = 101;
 UPDATE employees SET project_names = ARRAY_CONSTRUCT('Materialized Views', 'Lateral Joins')
     WHERE employee_ID = 102;
+
+
+    select * from employees;
 	
 	--   Second, execute a query that uses FLATTEN and contains a reference to a column(s) in a table that precedes it:
 	
